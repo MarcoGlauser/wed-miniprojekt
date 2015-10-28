@@ -1,12 +1,20 @@
-'use strict';
+require.config({
+  // base url relative to the index.html
+  baseUrl: './',
+  paths: {
+    'angular': 'bower_components/angular/angular'
+  },
+  // angular does not support async loading out of the box -> use the shim loader
+  shim: {
+    'angular': {
+      exports: 'angular'
+    }
+  }
+});
 
-// Declare app level module which depends on views, and components
-angular.module('myApp', [
-  'ngRoute',
-  'myApp.view1',
-  'myApp.view2',
-  'myApp.version'
-]).
-config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/view1'});
-}]);
+require(['angular'], function (Angular) {
+  var app = Angular.module("lafete");
+  Angular.element(document).ready(function() {
+    Angular.bootstrap(document, [app.name]);
+  });
+});
