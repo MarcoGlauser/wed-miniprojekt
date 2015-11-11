@@ -3,19 +3,24 @@ require.config({
     baseUrl: './',
     paths: {
         'angular': 'bower_components/angular/angular',
-        'app': 'components'
-
+        'angular-resource': 'bower_components/angular-resource/angular-resource'
     },
     // angular does not support async loading out of the box -> use the shim loader
     shim: {
         'angular': {
             exports: 'angular'
+        },
+        'angular-resource':{
+            exports: 'angular-resource'
         }
     }
 });
 
-require(['angular','app/modules/eventManager/eventManager'], function (Angular,EventManger) {
+require(['angular','events/events.js'], function (Angular,events) {
+    var EventManager = Angular.module('eventManager', ['ngResource']);
+
     Angular.element(document).ready(function () {
-        Angular.bootstrap(document, [EventManger.name]);
+        Angular.bootstrap(document, [EventManager.name]);
     });
 });
+
