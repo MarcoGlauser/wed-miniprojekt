@@ -16,8 +16,8 @@ require.config({
     }
 });
 
-require(['angular','events/events.js'], function (Angular,events) {
-    var EventManager = Angular.module('eventManager', ['ngResource']);
+require(['angular','events/events.js','angular-resource'], function (Angular,events) {
+    var EventManager = Angular.module('eventManager', ['ngResource','eventManager.events']);
 
     Angular.element(document).ready(function () {
         Angular.bootstrap(document, [EventManager.name]);

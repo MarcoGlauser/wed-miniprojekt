@@ -1,16 +1,14 @@
 <!DOCTYPE html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>My AngularJS App</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-  <div>
-      Test
-  </div>
-  <div ng-view></div>
-  <script src="bower_components/requirejs/require.js" data-main="app.js"></script>
-</body>
+<html ng-app="eventManager">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>My AngularJS App</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div ng-view="eventManager.events"></div>
+        <script src="bower_components/requirejs/require.js" data-main="app.js"></script>
+    </body>
 </html>
