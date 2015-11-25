@@ -1,4 +1,4 @@
-require(['angular','events/eventsService'], function (Angular,Event) {
+require(['angular','events/eventsService','angular-route'], function (Angular,Event) {
     Angular.module('eventManager.events',['ngRoute','eventManager.services'])
 
     .config(['$routeProvider', function($routeProvider) {
