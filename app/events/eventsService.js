@@ -15,7 +15,7 @@ define([], function () {
         var service = {
             list: function () { return Event.query().$promise},
             detail: function(id) {return Event.get({id:id}).$promise}
-        }
+        };
 
         return service
     }
