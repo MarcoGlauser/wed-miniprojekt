@@ -1,5 +1,7 @@
 'use strict';
 
+console.log("Reached view1.js");
+
 angular.module('myApp.view1', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
