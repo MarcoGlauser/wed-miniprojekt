@@ -8,10 +8,14 @@ define(['angular','events/events','events/eventsService','angular-resource','ang
     eventManager.controller('eventsController',eventsController);
 
     eventManager.config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/', {
-            templateUrl: 'events/events.html',
-            controller: 'eventsController'
-        });
+        $routeProvider
+            .when('/', {
+                templateUrl: 'events/events.html',
+                controller: 'eventsController'
+            })
+            .otherwise({
+                redirectTo: '/'
+            });
     }]);
 
     return eventManager;

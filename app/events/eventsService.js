@@ -1,18 +1,23 @@
 define([], function () {
     function eventsService($resource){
         var Event;
-        Event = $resource('http://127.0.0.1:8080/api/events/:id', { id: '@_id' }, {
+        Event = $resource('http://127.0.0.1:8080/api/events/:id', { id: '@id' }, {
             update: {
-                method: 'PUT'
+                method: 'put'
+            },
+            query: {
+                method : 'get',
+                isArray : true,
+                transformResponse : function (data) {return angular.fromJson(data).events}
             }
         });
 
         var service = {
-            eventList: Event.query().$promise,
-            eventDetail: Event.get({id:id}).$promise
+            list: function () { return Event.query().$promise},
+            detail: function(id) {return Event.get({id:id}).$promise}
         }
 
-        return Event
+        return service
     }
 
     return eventsService
