@@ -1,7 +1,16 @@
-<div ng-repeat="guest in guests">
-    {{guest.id}} <br />
-    {{guest.name}} <br />
-    {{guest.contribution}} <br />
-    {{guest.comment}} <br />
-    {{guest.canceled}} <br />
+<div class="centered">
+    <h1>Guests</h1>
+
+    <hr/>
+    <div ng-repeat="guest in guests">
+        <b><p>{{guest.name}}</p></b>
+
+        <p ng-hide="!guest.contribution">Gifts: {{guest.contribution}}</p>
+
+        <p ng-hide="!guest.comment">Comment: {{guest.comment}}</p>
+
+        <hr ng-hide="$last"/>
+    </div>
+    <hr>
+    <h4><a href="#/events">Zurück</a></h4>
 </div>

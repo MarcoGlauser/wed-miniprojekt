@@ -19,8 +19,12 @@ define([], function () {
         });
 
         var service = {
-            list: function () { return Guest.query({eventId: 1}).$promise},
-            detail: function(id) {return Guest.get({id:id}).$promise}
+            findGuestsForEvent: function (givenEventId) {
+                return Guest.query({eventId: givenEventId}).$promise;
+            },
+            detail: function(id) {
+                return Guest.get({id:id}).$promise;
+            }
         };
 
         return service

@@ -13,7 +13,7 @@ define(['angular','events/events','events/eventsService', 'guests/guests', 'gues
     guestService.$inject = ['$resource'];
     eventManager.factory('guestService', guestService);
 
-    guestsController.$inject=['$scope','guestService'];
+    guestsController.$inject=['$scope','guestService', '$routeParams'];
     eventManager.controller('guestsController',guestsController);
 
     eventManager.config(['$routeProvider', function($routeProvider) {
@@ -22,7 +22,7 @@ define(['angular','events/events','events/eventsService', 'guests/guests', 'gues
                 templateUrl: 'events/events.html',
                 controller: 'eventsController'
             })
-            .when('/guests', {
+            .when('/events/:eventId/guests', {
                 templateUrl: 'guests/guests.html',
                 controller: 'guestsController'
             })
