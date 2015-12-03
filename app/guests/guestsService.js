@@ -22,6 +22,9 @@ define([], function () {
             findGuestsForEvent: function (givenEventId) {
                 return Guest.query({eventId: givenEventId}).$promise;
             },
+            addGuestToEvent: function (givenEventId, guestToAdd) {
+                return Guest.save({eventId: givenEventId}, guestToAdd);
+            },
             detail: function(id) {
                 return Guest.get({id:id}).$promise;
             }

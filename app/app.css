@@ -32,6 +32,9 @@
     text-align: center;
 }
 
+a{
+    text-decoration: none;
+}
 hr{
     width: 50em;
     border: 0;

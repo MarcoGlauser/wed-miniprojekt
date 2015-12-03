@@ -1,5 +1,5 @@
-define(['angular','events/events','events/eventsService', 'guests/guests', 'guests/guestsService', 'angular-resource','angular-route'],
-    function (angular, eventsController, eventsService, guestsController, guestService) {
+define(['angular','events/events','events/eventsService', 'guests/showGuests', 'guests/guestsService', 'guests/addGuest', 'angular-resource','angular-route'],
+    function (angular, eventsController, eventsService, guestsController, guestService, addGuestController) {
 
     var eventManager = angular.module('eventManager', ['ngRoute','ngResource']);
 
@@ -16,6 +16,9 @@ define(['angular','events/events','events/eventsService', 'guests/guests', 'gues
     guestsController.$inject=['$scope','guestService', '$routeParams'];
     eventManager.controller('guestsController',guestsController);
 
+    addGuestController.$inject=['$scope','guestService', '$routeParams'];
+    eventManager.controller('addGuestController',addGuestController);
+
     eventManager.config(['$routeProvider', function($routeProvider) {
         $routeProvider
             .when('/', {
@@ -23,8 +26,12 @@ define(['angular','events/events','events/eventsService', 'guests/guests', 'gues
                 controller: 'eventsController'
             })
             .when('/events/:eventId/guests', {
-                templateUrl: 'guests/guests.html',
+                templateUrl: 'guests/showGuests.html',
                 controller: 'guestsController'
+            })
+            .when('/events/:eventId/addGuest', {
+                templateUrl: 'guests/addGuest.html',
+                controller: 'addGuestController'
             })
             .otherwise({
                 redirectTo: '/'

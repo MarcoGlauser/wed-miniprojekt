@@ -1,0 +1,27 @@
+<div class="centered">
+    <h1>Guests</h1>
+
+    <hr/>
+    <form ng-hide="addedGuest" name="guestForm">
+        <label for="name">Name</label>
+        <br/>
+        <input type="text" name="name" id="name" ng-model="inputName" required><br>
+        <span ng-show="guestForm.inputName.$error.required">Name is required.</span>
+
+        <label for="gift">Gift</label>
+        <br/>
+        <input type="text" name="gift" id="gift" ng-model="inputGift"><br>
+
+        <label for="comment">Comment</label>
+        <br/>
+        <textarea type="text" name="comment" id="comment" ng-model="inputComment" rows="3"></textarea><br>
+
+        <br/>
+        <input type="submit" value="Anmelden" ng-click="addGuestToEvent()" ng-disabled="guestForm.inputName.$invalid || guestForm.inputName.$pristine">
+    </form>
+
+    <h3 ng-show="addedGuest">Thank you. I've added you as guest.</h3>
+
+    <hr>
+    <h4><a href="#/events/{{eventId}}/guests"><i class="fa fa-arrow-left"></i> Zurück</a></h4>
+</div>
