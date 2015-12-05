@@ -1,4 +1,22 @@
-<h2>Events:</h2>
-<div ng-repeat="event in events">
-    <a href="#/events/{{event.id}}/guests" >{{event.name}}</a>
+<div class="title">
+    <h2>Events</h2>
+</div>
+<div ng-repeat="event in events | orderBy : 'times.begin'">
+    <div class="card">
+        <div class="cardTitle"><a href="#/events/{{event.id}}/guests" >{{event.name}}</a></div>
+        <div>{{event.times.begin | date: 'HH:mm - dd.MM.yyyy'}}</div>
+        <div>{{event.location.street}} {{event.location.city}}</div>
+        <div ng-show="event.guests.length">
+            G&auml;ste:
+            <div ng-repeat="guest in event.guests">
+                {{guest.name}}
+            </div>
+        </div>
+        <div ng-show="!event.guests.length">
+            <div>Keine G&auml;ste:</div>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div>Create new Event</div>
 </div>
