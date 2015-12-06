@@ -44,7 +44,7 @@ define(
         guestService.$inject = ['$resource'];
         eventManager.factory('guestService', guestService);
 
-        guestsController.$inject=['$scope','guestService', '$routeParams'];
+        guestsController.$inject=['$scope','guestService','eventsService', '$routeParams'];
         eventManager.controller('guestsController',guestsController);
 
         addGuestController.$inject=['$scope','guestService', '$routeParams', '$location'];

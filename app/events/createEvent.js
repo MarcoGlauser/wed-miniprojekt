@@ -16,7 +16,7 @@ define([], function () {
                 begin: null,
                 end: null
             },
-            maximalAmountOfGuests: null,
+            maximalAmoutOfGuests: null,
             guests: []
         };
 

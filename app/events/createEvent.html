@@ -4,7 +4,7 @@
 <div class="card">
     <div ng-show="eventCreated">Thank you. Your event has been created</div>
 
-    <form ng-show="!eventCreated" name="guestForm">
+    <form ng-show="!eventCreated" name="eventForm">
         <div class="formElement">
             <label for="name">Name</label>
             <input type="text" name="name" id="name" ng-model="event.name" required>
@@ -18,7 +18,7 @@
 
         <div class="formElement">
             <label for="maximalAmountOfGuests">Maximal amount of guests</label>
-            <input type="number" name="maximalAmountOfGuests" id="maximalAmountOfGuests" ng-model="event.maximalAmountOfGuests" >
+            <input type="number" name="maximalAmountOfGuests" id="maximalAmountOfGuests" ng-model="event.maximalAmoutOfGuests" >
         </div>
 
         <div class="formElement">
@@ -58,7 +58,7 @@
         </div>
 
         <div class="formElement">
-            <input type="submit" value="Create Event" ng-click="createEvent()" ng-disabled="guestForm.inputName.$invalid || guestForm.inputName.$pristine">
+            <input type="submit" value="Create Event" ng-click="createEvent()" ng-disabled="eventForm.inputName.$invalid || eventForm.inputName.$pristine">
         </div>
     </form>
 </div>

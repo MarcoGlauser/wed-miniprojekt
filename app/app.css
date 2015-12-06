@@ -45,7 +45,7 @@ hr{
 body{
     font-family: Roboto;
     margin: 0em;
-    background-image: linear-gradient(to left, #D17B2A 0%, #FF8103 50%, #D17B2A 100%);
+    background-image: linear-gradient(to left, #FF6103 0%, #FF8103 50%, #FF6103 100%);
 }
 
 .card{

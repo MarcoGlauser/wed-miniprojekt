@@ -1,5 +1,5 @@
 define([], function () {
-    function guestController($scope, guestsService, $routeParams) {
+    function guestController($scope, guestsService, eventsService,$routeParams) {
         $scope.eventId = $routeParams.eventId;
         $scope.guests = [];
 
@@ -16,6 +16,10 @@ define([], function () {
                 $scope.guests = guests;
             });
         }
+
+        eventsService.detail($routeParams.eventId).then(function(event){
+            $scope.event = event
+        })
     }
     return guestController
 });
