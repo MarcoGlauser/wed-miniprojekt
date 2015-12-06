@@ -7,6 +7,10 @@
     <div ng-hide="!guest.contribution">Gifts: {{guest.contribution}}</div>
 
     <div ng-hide="!guest.comment">Comment: {{guest.comment}}</div>
+
+    <div style="text-align: right">
+        <a href="#/events/{{eventId}}/guests" ng-click="signOut(guest.id)">Abmelden <i class="fa fa-sign-out" right></i></a>
+    </div>
 </div>
 
 <div class="card"><a href="#/events/{{eventId}}/addGuest"><i class="fa fa-plus" left></i> Anmelden</a></div>

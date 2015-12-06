@@ -111,3 +111,6 @@ i{
 .has-error{
     border-color: firebrick;
 }
+.right-aligned {
+    text-align: center
+}
