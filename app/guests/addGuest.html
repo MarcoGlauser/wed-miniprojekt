@@ -16,6 +16,7 @@
                    ng-class="{'has-error': guestForm.inputName.$invalid}"
                    name="inputName"
                    id="inputName"
+                   ng-value="inputName"
                    ng-model="inputName"
                    required>
         </div>
@@ -23,21 +24,31 @@
 
         <div class="formElement">
             <label for="gift">Gift</label>
-            <input type="text" name="gift" id="gift" ng-model="inputGift">
+            <input type="text"
+                   name="gift"
+                   id="gift"
+                   ng-value="inputGift"
+                   ng-model="inputGift">
         </div>
 
         <div class="formElement">
             <label for="comment">Comment</label>
-            <textarea type="text" name="comment" id="comment" ng-model="inputComment" rows="3"></textarea>
+            <textarea type="text"
+                      name="comment"
+                      id="comment"
+                      ng-value="inputComment"
+                      ng-model="inputComment"
+                      rows="3"></textarea>
         </div>
 
         <div class="formElement">
-            <input type="submit" value="Anmelden" ng-click="addGuestToEvent()" ng-disabled="guestForm.inputName.$invalid || guestForm.inputName.$pristine">
+            <input ng-show="!isSaveMode" type="submit" value="Anmelden" ng-click="addGuestToEvent()"
+                   ng-disabled="guestForm.inputName.$invalid || guestForm.inputName.$pristine">
+
+            <input ng-show="isSaveMode" type="submit" value="Speichern" ng-click="saveGuest()" >
         </div>
     </form>
 </div>
-
-
 
 <div class="card"><a href="#/events/{{eventId}}/guests"><i class="fa fa-arrow-left"></i> Zurück</a></div>
 

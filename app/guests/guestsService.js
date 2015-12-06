@@ -20,16 +20,33 @@ define([], function () {
 
         var service = {
             findGuestsForEvent: function (givenEventId) {
-                return Guest.query({eventId: givenEventId}).$promise;
+                return Guest.query(
+                    {eventId: givenEventId}
+                ).$promise;
             },
             addGuestToEvent: function (givenEventId, guestToAdd) {
-                return Guest.save({eventId: givenEventId}, guestToAdd);
+                return Guest.save(
+                    {eventId: givenEventId},
+                    guestToAdd
+                );
             },
             signOutGuest: function (givenEventId, givenGuestId) {
-                return Guest.save({eventId: givenEventId, guestId: givenGuestId}, {canceled: true}).$promise;
+                return Guest.save(
+                    {eventId: givenEventId, guestId: givenGuestId},
+                    {canceled: true}
+                ).$promise;
             },
-            detail: function(id) {
-                return Guest.get({id:id}).$promise;
+            saveUpdatedGuest: function (givenEventId, updatedGuest) {
+                return Guest.save(
+                    {eventId: givenEventId, guestId: updatedGuest.id},
+                    updatedGuest
+                ).$promise;
+            },
+            findGuestById: function(givenEventId, givenGuestId) {
+                return Guest.get({
+                    eventId: givenEventId,
+                    guestId: givenGuestId
+                }).$promise;
             }
         };
 
