@@ -47,7 +47,7 @@ define(
         guestsController.$inject=['$scope','guestService', '$routeParams'];
         eventManager.controller('guestsController',guestsController);
 
-        addGuestController.$inject=['$scope','guestService', '$routeParams'];
+        addGuestController.$inject=['$scope','guestService', '$routeParams', '$location'];
         eventManager.controller('addGuestController',addGuestController);
 
         eventManager.config(['$routeProvider', function($routeProvider) {
@@ -69,6 +69,10 @@ define(
                     controller: 'guestsController'
                 })
                 .when('/events/:eventId/addGuest', {
+                    templateUrl: 'guests/addGuest.html',
+                    controller: 'addGuestController'
+                })
+                .when('/events/:eventId/guest/:guestId/edit', {
                     templateUrl: 'guests/addGuest.html',
                     controller: 'addGuestController'
                 })
