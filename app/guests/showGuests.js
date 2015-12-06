@@ -6,8 +6,9 @@ define([], function () {
         updateGuests();
 
         $scope.signOut = function(guestId){
-            guestsService.signOutGuest($scope.eventId, guestId);
-            updateGuests();
+            guestsService.signOutGuest($scope.eventId, guestId).then(function(){
+                updateGuests();
+            });
         };
 
         function updateGuests() {

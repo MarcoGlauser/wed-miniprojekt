@@ -26,7 +26,7 @@ define([], function () {
                 return Guest.save({eventId: givenEventId}, guestToAdd);
             },
             signOutGuest: function (givenEventId, givenGuestId) {
-                return Guest.save({eventId: givenEventId, guestId: givenGuestId}, {canceled: true});
+                return Guest.save({eventId: givenEventId, guestId: givenGuestId}, {canceled: true}).$promise;
             },
             detail: function(id) {
                 return Guest.get({id:id}).$promise;
