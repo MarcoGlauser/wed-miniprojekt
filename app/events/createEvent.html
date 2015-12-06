@@ -58,7 +58,7 @@
         </div>
 
         <div class="formElement">
-            <input type="submit" value="Create Event" ng-click="createEvent()" ng-disabled="eventForm.inputName.$invalid || eventForm.inputName.$pristine">
+            <input type="submit" value="Create Event" ng-click="createEvent()" ng-disabled="eventForm.$invalid">
         </div>
     </form>
 </div>
