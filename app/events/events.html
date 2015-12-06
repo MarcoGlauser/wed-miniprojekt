@@ -8,7 +8,7 @@
     <div>{{event.location.street}} {{event.location.city}}</div>
     <div ng-show="event.guests.length">
         G&auml;ste:
-        <div ng-repeat="guest in event.guests">
+        <div ng-repeat="guest in event.guests |  filter:{canceled:false}">
             {{guest.name}}
         </div>
     </div>

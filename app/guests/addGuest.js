@@ -22,7 +22,7 @@ define([], function () {
         $scope.addGuestToEvent = function () {
             guestsService.addGuestToEvent($scope.eventId, {
                 name: $scope.inputName,
-                gift: $scope.inputGift,
+                contribution: $scope.inputGift,
                 comment: $scope.inputComment
             });
             $scope.addedGuest = true;
@@ -32,7 +32,7 @@ define([], function () {
             guestsService.saveUpdatedGuest($scope.eventId, {
                 id: $scope.guestId,
                 name: $scope.inputName,
-                gift: $scope.inputGift,
+                contribution: $scope.inputGift,
                 comment: $scope.inputComment
             }).then(function(){
                 $location.path('/events/' + $scope.eventId + '/guests');
