@@ -1,5 +1,5 @@
-define(['angular','events/events','events/eventsService', 'guests/showGuests', 'guests/guestsService', 'guests/addGuest', 'angular-resource','angular-route'],
-    function (angular, eventsController, eventsService, guestsController, guestService, addGuestController) {
+define(['angular','events/events','events/eventsService', 'guests/showGuests', 'guests/guestsService', 'guests/addGuest', 'events/createEvent.js', 'angular-resource','angular-route'],
+    function (angular, eventsController, eventsService, guestsController, guestService, addGuestController,createEventController) {
 
     var eventManager = angular.module('eventManager', ['ngRoute','ngResource']);
 
@@ -8,6 +8,9 @@ define(['angular','events/events','events/eventsService', 'guests/showGuests', '
 
     eventsController.$inject=['$scope','eventsService'];
     eventManager.controller('eventsController',eventsController);
+
+    createEventController.$inject=['$scope','eventsService'];
+    eventManager.controller('createEventController',createEventController);
 
     // guests related stuff
     guestService.$inject = ['$resource'];
@@ -24,6 +27,14 @@ define(['angular','events/events','events/eventsService', 'guests/showGuests', '
             .when('/', {
                 templateUrl: 'events/events.html',
                 controller: 'eventsController'
+            })
+            .when('/events/create', {
+                templateUrl: 'events/createEvent.html',
+                controller: 'createEventController'
+            })
+            .when('/events/:eventId', {
+                templateUrl: 'guests/showGuests.html',
+                controller: 'guestsController'
             })
             .when('/events/:eventId/guests', {
                 templateUrl: 'guests/showGuests.html',

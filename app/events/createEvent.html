@@ -1,0 +1,65 @@
+<div class="title">
+    <h2>Create new Event</h2>
+</div>
+<div class="card">
+    <div ng-hide="!eventCreated">Thank you. Your event has been created</div>
+
+    <form ng-hide="eventCreated" name="guestForm">
+        <div class="formElement">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" ng-model="event.name" required>
+            <span ng-show="guestForm.inputName.$error.required">Name is required.</span>
+        </div>
+
+        <div class="formElement">
+            <label for="description">Description</label>
+            <textarea type="text" name="description" id="description" ng-model="event.description" rows="3"></textarea>
+        </div>
+
+        <div class="formElement">
+            <label for="maximalAmountOfGuests">Maximal amount of guests</label>
+            <input type="number" name="maximalAmountOfGuests" id="maximalAmountOfGuests" ng-model="event.maximalAmountOfGuests" >
+        </div>
+
+        <div class="formElement">
+            <label for="timesBegin">Start Time</label>
+            <input type="datetime" name="timesBegin" id="timesBegin" ng-model="event.times.begin" required>
+            <span ng-show="guestForm.inputName.$error.required">Start Time is required.</span>
+        </div>
+
+        <div class="formElement">
+            <label for="timesEnd">End Time</label>
+            <input type="datetime" name="timesEnd" id="timesEnd" ng-model="event.times.end" required>
+            <span ng-show="guestForm.inputName.$error.required">End Time is required.</span>
+        </div>
+
+        <div class="formElement">
+            <label for="locationName">Location Name</label>
+            <input type="text" name="locationName" id="locationName" ng-model="event.location.name" required>
+            <span ng-show="guestForm.inputName.$error.required">Location Name is required.</span>
+        </div>
+
+        <div class="formElement">
+            <label for="locationStreet">Location Street</label>
+            <input type="text" name="locationStreet" id="locationStreet" ng-model="event.location.street" required>
+            <span ng-show="guestForm.inputName.$error.required">Location Street is required.</span>
+        </div>
+
+        <div class="formElement">
+            <label for="locationZip">Location Zip</label>
+            <input type="text" name="locationZip" id="locationZip" ng-model="event.location.plz" required>
+            <span ng-show="guestForm.inputName.$error.required">Location PLZ is required.</span>
+        </div>
+
+        <div class="formElement">
+            <label for="locationCity">Location City</label>
+            <input type="text" name="locationCity" id="locationCity" ng-model="event.location.city" required>
+            <span ng-show="guestForm.inputName.$error.required">Location City is required.</span>
+        </div>
+
+        <div class="formElement">
+            <input type="submit" value="Create Event" ng-click="createEvent()" ng-disabled="guestForm.inputName.$invalid || guestForm.inputName.$pristine">
+        </div>
+    </form>
+</div>
+<div class="card"><a href="#/"><i class="fa fa-arrow-left"></i> Zurück</a></div>

@@ -52,12 +52,13 @@ body{
     margin: auto;
     background-color: #FFF;
     margin-bottom :1em;
-    padding: 0.5em;
+    padding: 10px;
     box-shadow: 2px 2px 4px 0px rgba(20,20,20,0.75);
     color: #999999;
     font-weight: 100;
+    max-width:25em;
     width:100%;
-    max-width:20em;
+    box-sizing: border-box;
 }
 
 .card > :first-child{
@@ -67,5 +68,39 @@ body{
 }
 
 .title{
-    text-align: center
+    text-align: center;
+    font-weight: 300;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+i{
+    padding-right: 5px;
+}
+
+.formElement input ,.formElement textarea{
+    width:100%;
+    border: none;
+    background: none;
+}
+.formElement input[type='text'],.formElement input[type='number'],.formElement input[type='datetime'] , .formElement textarea{
+    border-bottom: solid #b3d4fc 1px;
+}
+
+.formElement input[type='submit']{
+    font-size: 1.1em;
+    width: 100%;
+    padding-top:10px;
+}
+
+.formElement label{
+    display: block;
+}
+
+.formElement{
+    padding-bottom: 20px;
+    width: 100%;
 }
