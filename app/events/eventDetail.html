@@ -1,0 +1,23 @@
+<div class="title">
+    <h2>{{event.name}}</h2>
+</div>
+
+<div class="card">
+    <div ng-show="event.name">{{event.name}}</div>
+    <div>Start: {{event.times.begin | date: 'HH:mm - dd.MM.yyyy'}}</div>
+    <div>End: {{event.times.end | date: 'HH:mm - dd.MM.yyyy'}}</div>
+    <div>
+        <div>Description:</div>
+        {{event.description}}
+    </div>
+    <div ng-show="event.targetGroup"> Traget group: {{event.targetGroup}}</div>
+    <div ng-show="event.contributionsDescription">Contributions: {{event.contributionsDescription}}</div>
+    <div ng-show="event.guests.length">
+        <div>{{event.guests.length}} G&auml;ste</div>
+    </div>
+    <div ng-show="!event.guests.length">
+        <div>Keine G&auml;ste</div>
+    </div>
+</div>
+<div class="card"><a href="#/events/{{event.id}}/guests"><i class="fa fa-users"></i> Gäste</a></div>
+<div class="card"><a href="#/"><i class="fa fa-arrow-left"></i> Zurück</a></div>

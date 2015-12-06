@@ -7,6 +7,7 @@ define(
         'guests/guestsService',
         'guests/addGuest',
         'events/createEvent',
+        'events/eventDetail',
         'components/services/UUIDService',
         'angular-resource','angular-route'
     ],
@@ -18,6 +19,7 @@ define(
         guestService,
         addGuestController,
         createEventController,
+        eventDetailController,
         uuidService
     ) {
 
@@ -33,6 +35,10 @@ define(
 
         createEventController.$inject=['$scope','eventsService','uuidService'];
         eventManager.controller('createEventController',createEventController);
+
+        eventDetailController.$inject=['$scope','eventsService','$routeParams'];
+        eventManager.controller('eventDetailController',eventDetailController);
+
 
         // guests related stuff
         guestService.$inject = ['$resource'];
@@ -55,8 +61,8 @@ define(
                     controller: 'createEventController'
                 })
                 .when('/events/:eventId', {
-                    templateUrl: 'guests/showGuests.html',
-                    controller: 'guestsController'
+                    templateUrl: 'events/eventDetail.html',
+                    controller: 'eventDetailController'
                 })
                 .when('/events/:eventId/guests', {
                     templateUrl: 'guests/showGuests.html',
