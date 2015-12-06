@@ -1,19 +1,15 @@
-<div class="centered">
-    <h1>Guests</h1>
-
-    <hr/>
-    <div ng-repeat="guest in guests">
-        <b><p>{{guest.name}}</p></b>
-
-        <p ng-hide="!guest.contribution">Gifts: {{guest.contribution}}</p>
-
-        <p ng-hide="!guest.comment">Comment: {{guest.comment}}</p>
-
-        <hr ng-hide="$last"/>
-    </div>
-
-    <hr>
-    <h4><a href="#/events"><i class="fa fa-arrow-left"></i> Zurück</a></h4>
-    <h4><a href="#/events/{{eventId}}/addGuest"><i class="fa fa-plus"left></i> Anmelden</a></h4>
-
+<div class="title">
+    <h2>Guests</h2>
 </div>
+<div class="card" ng-repeat="guest in guests">
+    <div>{{guest.name}}</div>
+
+    <div ng-hide="!guest.contribution">Gifts: {{guest.contribution}}</div>
+
+    <div ng-hide="!guest.comment">Comment: {{guest.comment}}</div>
+</div>
+
+<div class="card"><a href="#/events/{{eventId}}/addGuest"><i class="fa fa-plus" left></i> Anmelden</a></div>
+
+<div class="card"><a href="#/events"><i class="fa fa-arrow-left"></i> Zurück</a></div>
+

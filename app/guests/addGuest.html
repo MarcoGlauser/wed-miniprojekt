@@ -1,27 +1,35 @@
-<div class="centered">
-    <h1>Guests</h1>
-
-    <hr/>
-    <form ng-hide="addedGuest" name="guestForm">
-        <label for="name">Name</label>
-        <br/>
-        <input type="text" name="name" id="name" ng-model="inputName" required><br>
-        <span ng-show="guestForm.inputName.$error.required">Name is required.</span>
-
-        <label for="gift">Gift</label>
-        <br/>
-        <input type="text" name="gift" id="gift" ng-model="inputGift"><br>
-
-        <label for="comment">Comment</label>
-        <br/>
-        <textarea type="text" name="comment" id="comment" ng-model="inputComment" rows="3"></textarea><br>
-
-        <br/>
-        <input type="submit" value="Anmelden" ng-click="addGuestToEvent()" ng-disabled="guestForm.inputName.$invalid || guestForm.inputName.$pristine">
-    </form>
-
-    <h3 ng-show="addedGuest">Thank you. I've added you as guest.</h3>
-
-    <hr>
-    <h4><a href="#/events/{{eventId}}/guests"><i class="fa fa-arrow-left"></i> Zurück</a></h4>
+<div class="title">
+    <h2>Add Guests</h2>
 </div>
+
+<div class="card">
+    <div ng-show="addedGuest">Thank you. I've added you as guest.</div>
+
+    <form ng-show="!addedGuest" name="guestForm">
+        <div class="formElement">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" ng-model="inputName" required>
+            <span ng-show="guestForm.inputName.$error.required">Name is required.</span>
+        </div>
+
+
+        <div class="formElement">
+            <label for="gift">Gift</label>
+            <input type="text" name="gift" id="gift" ng-model="inputGift">
+        </div>
+
+        <div class="formElement">
+            <label for="comment">Comment</label>
+            <textarea type="text" name="comment" id="comment" ng-model="inputComment" rows="3"></textarea>
+        </div>
+
+        <div class="formElement">
+            <input type="submit" value="Anmelden" ng-click="addGuestToEvent()" ng-disabled="guestForm.inputName.$invalid || guestForm.inputName.$pristine">
+        </div>
+    </form>
+</div>
+
+
+
+<div class="card"><a href="#/events/{{eventId}}/guests"><i class="fa fa-arrow-left"></i> Zurück</a></div>
+

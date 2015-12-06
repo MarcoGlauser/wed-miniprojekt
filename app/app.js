@@ -1,15 +1,17 @@
-define(['angular','events/events','events/eventsService', 'guests/showGuests', 'guests/guestsService', 'guests/addGuest', 'events/createEvent.js', 'angular-resource','angular-route'],
-    function (angular, eventsController, eventsService, guestsController, guestService, addGuestController,createEventController) {
+define(['angular','events/events','events/eventsService', 'guests/showGuests', 'guests/guestsService', 'guests/addGuest', 'events/createEvent', 'components/services/UUIDService', 'angular-resource','angular-route'],
+    function (angular, eventsController, eventsService, guestsController, guestService, addGuestController,createEventController,uuidService) {
 
     var eventManager = angular.module('eventManager', ['ngRoute','ngResource']);
 
     eventsService.$inject = ['$resource'];
     eventManager.factory('eventsService',eventsService);
 
+    eventManager.factory('uuidService',uuidService);
+
     eventsController.$inject=['$scope','eventsService'];
     eventManager.controller('eventsController',eventsController);
 
-    createEventController.$inject=['$scope','eventsService'];
+    createEventController.$inject=['$scope','eventsService','uuidService'];
     eventManager.controller('createEventController',createEventController);
 
     // guests related stuff
