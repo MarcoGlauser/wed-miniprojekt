@@ -69,3 +69,10 @@ body{
 .title{
     text-align: center
 }
+
+.bottom-menu{
+    text-align: center
+}
+.has-error{
+    border-color: firebrick;
+}

@@ -1,12 +1,19 @@
-<div class="centered">
+<div class="card">
     <h1>Guests</h1>
 
-    <hr/>
-    <form ng-hide="addedGuest" name="guestForm">
-        <label for="name">Name</label>
-        <br/>
-        <input type="text" name="name" id="name" ng-model="inputName" required><br>
+    <span style="color:red" ng-show="guestForm.$dirty && guestForm.$invalid">
         <span ng-show="guestForm.inputName.$error.required">Name is required.</span>
+    </span>
+
+    <form ng-hide="addedGuest" name="guestForm">
+        <label for="inputName">Name</label>
+        <br/>
+        <input type="text"
+               id="inputName"
+               name="inputName"
+               ng-model="inputName"
+               ng-class="{'has-error': guestForm.inputName.$invalid}"
+               required><br>
 
         <label for="gift">Gift</label>
         <br/>
@@ -17,11 +24,10 @@
         <textarea type="text" name="comment" id="comment" ng-model="inputComment" rows="3"></textarea><br>
 
         <br/>
-        <input type="submit" value="Anmelden" ng-click="addGuestToEvent()" ng-disabled="guestForm.inputName.$invalid || guestForm.inputName.$pristine">
+        <input type="submit" value="Anmelden" ng-click="addGuestToEvent()"
+               ng-disabled="guestForm.$dirty && guestForm.$invalid">
     </form>
 
-    <h3 ng-show="addedGuest">Thank you. I've added you as guest.</h3>
-
-    <hr>
+    <h3 ng-show="addedGuest">Thank you. I've added you a as guest.</h3>
     <h4><a href="#/events/{{eventId}}/guests"><i class="fa fa-arrow-left"></i> Zurück</a></h4>
 </div>

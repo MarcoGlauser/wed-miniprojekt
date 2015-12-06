@@ -4,7 +4,7 @@ define([], function () {
         Guest = $resource('http://127.0.0.1:8080/api/events/:eventId/guests/:guestId',
             {
                 eventId: '@eventId',
-                guetsId: '@guestId'
+                guestId: '@guestId'
             }, {
             update: {
                 method: 'put'
@@ -24,6 +24,9 @@ define([], function () {
             },
             addGuestToEvent: function (givenEventId, guestToAdd) {
                 return Guest.save({eventId: givenEventId}, guestToAdd);
+            },
+            signOutGuest: function (givenEventId, givenGuestId) {
+                return Guest.save({eventId: givenEventId, guestId: givenGuestId}, {canceled: true});
             },
             detail: function(id) {
                 return Guest.get({id:id}).$promise;
