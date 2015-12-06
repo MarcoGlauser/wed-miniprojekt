@@ -2,9 +2,9 @@
     <h2>Create new Event</h2>
 </div>
 <div class="card">
-    <div ng-hide="!eventCreated">Thank you. Your event has been created</div>
+    <div ng-show="eventCreated">Thank you. Your event has been created</div>
 
-    <form ng-hide="eventCreated" name="guestForm">
+    <form ng-show="!eventCreated" name="guestForm">
         <div class="formElement">
             <label for="name">Name</label>
             <input type="text" name="name" id="name" ng-model="event.name" required>
@@ -23,13 +23,13 @@
 
         <div class="formElement">
             <label for="timesBegin">Start Time</label>
-            <input type="datetime" name="timesBegin" id="timesBegin" ng-model="event.times.begin" required>
+            <input type="datetime" name="timesBegin" id="timesBegin" placeholder="yyyy-MM-ddTHH:mm:ss" ng-model="event.times.begin" required>
             <span ng-show="guestForm.inputName.$error.required">Start Time is required.</span>
         </div>
 
         <div class="formElement">
             <label for="timesEnd">End Time</label>
-            <input type="datetime" name="timesEnd" id="timesEnd" ng-model="event.times.end" required>
+            <input type="datetime-local" name="timesEnd" id="timesEnd" placeholder="yyyy-MM-ddTHH:mm:ss" ng-model="event.times.end" required>
             <span ng-show="guestForm.inputName.$error.required">End Time is required.</span>
         </div>
 

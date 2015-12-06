@@ -1,33 +1,44 @@
+<div class="title">
+    <h2>Add Guests</h2>
+</div>
+
 <div class="card">
-    <h1>Guests</h1>
+    <div ng-show="addedGuest">Thank you. I've added you as guest.</div>
 
     <span style="color:red" ng-show="guestForm.$dirty && guestForm.$invalid">
         <span ng-show="guestForm.inputName.$error.required">Name is required.</span>
     </span>
 
-    <form ng-hide="addedGuest" name="guestForm">
-        <label for="inputName">Name</label>
-        <br/>
-        <input type="text"
-               id="inputName"
-               name="inputName"
-               ng-model="inputName"
-               ng-class="{'has-error': guestForm.inputName.$invalid}"
-               required><br>
+    <form ng-show="!addedGuest" name="guestForm">
+        <div class="formElement">
+            <label for="inputName">Name</label>
+            <input type="text"
+                   ng-class="{'has-error': guestForm.inputName.$invalid}"
+                   name="inputName"
+                   id="inputName"
+                   ng-model="inputName"
+                   required>
+            <span ng-show="guestForm.inputName.$error.required">Name is required.</span>
+        </div>
 
-        <label for="gift">Gift</label>
-        <br/>
-        <input type="text" name="gift" id="gift" ng-model="inputGift"><br>
 
-        <label for="comment">Comment</label>
-        <br/>
-        <textarea type="text" name="comment" id="comment" ng-model="inputComment" rows="3"></textarea><br>
+        <div class="formElement">
+            <label for="gift">Gift</label>
+            <input type="text" name="gift" id="gift" ng-model="inputGift">
+        </div>
 
-        <br/>
-        <input type="submit" value="Anmelden" ng-click="addGuestToEvent()"
-               ng-disabled="guestForm.$dirty && guestForm.$invalid">
+        <div class="formElement">
+            <label for="comment">Comment</label>
+            <textarea type="text" name="comment" id="comment" ng-model="inputComment" rows="3"></textarea>
+        </div>
+
+        <div class="formElement">
+            <input type="submit" value="Anmelden" ng-click="addGuestToEvent()" ng-disabled="guestForm.inputName.$invalid || guestForm.inputName.$pristine">
+        </div>
     </form>
-
-    <h3 ng-show="addedGuest">Thank you. I've added you a as guest.</h3>
-    <h4><a href="#/events/{{eventId}}/guests"><i class="fa fa-arrow-left"></i> Zurück</a></h4>
 </div>
+
+
+
+<div class="card"><a href="#/events/{{eventId}}/guests"><i class="fa fa-arrow-left"></i> Zurück</a></div>
+

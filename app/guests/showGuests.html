@@ -1,18 +1,15 @@
 <div class="title">
     <h2>Guests</h2>
 </div>
+<div class="card" ng-repeat="guest in guests | filter:{canceled:false}">
+    <div>{{guest.name}}</div>
 
-<div>
-    <div class="card" ng-repeat="guest in guests | filter:{canceled:false}">
-        <p><b>{{guest.name}}</b>
-        <a href="#/events/{{eventId}}/guests" ng-click="signOut(guest.id)"><i class="fa fa-sign-out"left></i> Abmelden</a>
-        </p>
-        <p ng-hide="!guest.contribution">Gifts: {{guest.contribution}}</p>
-        <p ng-hide="!guest.comment">Comment: {{guest.comment}}</p>
-    </div>
+    <div ng-hide="!guest.contribution">Gifts: {{guest.contribution}}</div>
+
+    <div ng-hide="!guest.comment">Comment: {{guest.comment}}</div>
 </div>
 
-<div class="bottom-menu">
-    <h4><a href="#/events/{{eventId}}/addGuest"><i class="fa fa-plus"left></i> Anmelden</a></h4>
-    <h4><a href="#/events"><i class="fa fa-arrow-left"></i> Zurück</a></h4>
-</div>
+<div class="card"><a href="#/events/{{eventId}}/addGuest"><i class="fa fa-plus" left></i> Anmelden</a></div>
+
+<div class="card"><a href="#/events"><i class="fa fa-arrow-left"></i> Zurück</a></div>
+

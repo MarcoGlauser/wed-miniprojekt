@@ -52,7 +52,7 @@ body{
     margin: auto;
     background-color: #FFF;
     margin-bottom :1em;
-    padding: 10px;
+    padding: 20px;
     box-shadow: 2px 2px 4px 0px rgba(20,20,20,0.75);
     color: #999999;
     font-weight: 100;
@@ -78,7 +78,7 @@ a{
 }
 
 i{
-    padding-right: 5px;
+    padding-right: 8px;
 }
 
 .formElement input ,.formElement textarea{
