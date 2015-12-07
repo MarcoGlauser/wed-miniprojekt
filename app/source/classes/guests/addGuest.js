@@ -12,7 +12,7 @@ define([], function () {
             $scope.isSaveMode = true;
             guestsService.findGuestById($scope.eventId, $scope.guestId).then(function(foundGuest){
                 $scope.inputName = foundGuest.name;
-                $scope.inputGift = foundGuest.gift;
+                $scope.inputGift = foundGuest.contribution;
                 $scope.inputComment = foundGuest.comment;
             });
         }
