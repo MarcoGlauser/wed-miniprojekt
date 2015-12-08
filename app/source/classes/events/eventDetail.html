@@ -12,11 +12,11 @@
     </div>
     <div ng-show="event.targetGroup"> Traget group: {{event.targetGroup}}</div>
     <div ng-show="event.contributionsDescription">Contributions: {{event.contributionsDescription}}</div>
-    <div ng-show="event.maximalAmoutOfGuests">Max guests: {{event.maximalAmoutOfGuests}}</div>
-    <div ng-show="event.notCancelledGuests.length">
-        <div>{{event.notCancelledGuests.length}} G&auml;ste</div>
+    <div ng-show="event.maxAmountOfGuests">Max guests: {{event.maxAmountOfGuests}}</div>
+    <div ng-show="event.notCancelledGuests().length">
+        <div>{{event.notCancelledGuests().length}} G&auml;ste</div>
     </div>
-    <div ng-show="!event.notCancelledGuests.length">
+    <div ng-show="!event.notCancelledGuests().length">
         <div>Keine G&auml;ste</div>
     </div>
 </div>

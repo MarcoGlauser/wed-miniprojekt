@@ -37,12 +37,15 @@ define([], function () {
         };
 
         function annotateNotCancelledGuests(event) {
-            event.notCancelledGuests = event.guests.filter(function (guest) {
-                return !guest.canceled
-            });
-            event.signupOpen = function(){
-                return this.maximalAmoutOfGuests == undefined || this.notCancelledGuests.length < this.maximalAmoutOfGuests;
+            event.notCancelledGuests = function() {
+                return event.guests.filter(function (guest) {
+                    return !guest.canceled
+                });
             };
+            event.signupOpen = function(){
+                return this.maxAmountOfGuests == undefined || this.notCancelledGuests().length < this.maxAmountOfGuests;
+            };
+            console.log(event.signupOpen())
         }
 
         return service

@@ -1,11 +1,11 @@
 define([], function () {
     function createEventController($scope, eventsService, UUIDService) {
         $scope.event = {
-            id: UUIDService.getRandomUuid(),
+            id: null,
             name: null,
             description: null,
             targetGroup: null,
-            contributions: [],
+            contributions: null,
             location: {
                 name: null,
                 street: null,
@@ -16,7 +16,7 @@ define([], function () {
                 begin: null,
                 end: null
             },
-            maximalAmoutOfGuests: null,
+            maximalAmountOfGuests: null,
             guests: []
         };
 

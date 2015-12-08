@@ -6,10 +6,10 @@
     <div class="cardTitle"><a href="#/events/{{event.id}}" >{{event.name}}</a></div>
     <div>{{event.times.begin | date: 'HH:mm - dd.MM.yyyy'}}</div>
     <div>{{event.location.street}} {{event.location.city}}</div>
-    <div ng-show="event.notCancelledGuests.length">
-        <div>{{event.notCancelledGuests.length}} G&auml;ste</div>
+    <div ng-show="event.notCancelledGuests().length">
+        <div>{{event.notCancelledGuests().length}} G&auml;ste</div>
     </div>
-    <div ng-show="!event.notCancelledGuests.length">
+    <div ng-show="!event.notCancelledGuests().length">
         <div>Keine G&auml;ste</div>
     </div>
 </div>

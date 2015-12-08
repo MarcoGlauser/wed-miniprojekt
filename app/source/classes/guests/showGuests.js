@@ -4,22 +4,26 @@ define([], function () {
         $scope.guests = [];
 
         updateGuests();
+        updateEvent();
 
         $scope.signOut = function(guestId){
             guestsService.signOutGuest($scope.eventId, guestId).then(function(){
                 updateGuests();
+                updateEvent();
             });
         };
 
         function updateGuests() {
             guestsService.findGuestsForEvent($scope.eventId).then(function (guests) {
                 $scope.guests = guests;
+
             });
         }
-
-        eventsService.detail($routeParams.eventId).then(function(event){
-            $scope.event = event
-        })
+        function updateEvent() {
+            eventsService.detail($routeParams.eventId).then(function(event){
+                $scope.signupOpen = event.signupOpen()
+            })
+        }
     }
     return guestController
 });
