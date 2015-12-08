@@ -1,5 +1,6 @@
 define([], function() {
-    'use strict'
+    'use strict';
+
     function uuidService(){
         return UUIDService
     }

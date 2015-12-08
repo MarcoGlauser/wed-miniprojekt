@@ -1,14 +1,14 @@
 define(
     [
         'angular',
-        'events/events',
-        'events/eventsService',
-        'guests/showGuests',
-        'guests/guestsService',
-        'guests/addGuest',
-        'events/createEvent',
-        'events/eventDetail',
-        'components/services/UUIDService',
+        'classes/events/events',
+        'classes/events/eventsService',
+        'classes/guests/showGuests',
+        'classes/guests/guestsService',
+        'classes/guests/addGuest',
+        'classes/events/createEvent',
+        'classes/events/eventDetail',
+        'classes/components/services/UUIDService',
         'angular-resource','angular-route'
     ],
     function (
@@ -53,27 +53,27 @@ define(
         eventManager.config(['$routeProvider', function($routeProvider) {
             $routeProvider
                 .when('/', {
-                    templateUrl: 'events/events.html',
+                    templateUrl: 'classes/events/events.html',
                     controller: 'eventsController'
                 })
                 .when('/events/create', {
-                    templateUrl: 'events/createEvent.html',
+                    templateUrl: 'classes/events/createEvent.html',
                     controller: 'createEventController'
                 })
                 .when('/events/:eventId', {
-                    templateUrl: 'events/eventDetail.html',
+                    templateUrl: 'classes/events/eventDetail.html',
                     controller: 'eventDetailController'
                 })
                 .when('/events/:eventId/guests', {
-                    templateUrl: 'guests/showGuests.html',
+                    templateUrl: 'classes/guests/showGuests.html',
                     controller: 'guestsController'
                 })
                 .when('/events/:eventId/addGuest', {
-                    templateUrl: 'guests/addGuest.html',
+                    templateUrl: 'classes/guests/addGuest.html',
                     controller: 'addGuestController'
                 })
                 .when('/events/:eventId/guest/:guestId/edit', {
-                    templateUrl: 'guests/addGuest.html',
+                    templateUrl: 'classes/guests/addGuest.html',
                     controller: 'addGuestController'
                 })
                 .otherwise({

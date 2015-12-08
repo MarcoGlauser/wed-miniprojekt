@@ -13,7 +13,7 @@ var allowCrossDomain = function(request, response, next) {
 
 
 /**
- * Event / guest storage
+ * Event / guests storage
  */
 var eventId = 0;
 var guestId = 0;
