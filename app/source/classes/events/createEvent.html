@@ -8,7 +8,6 @@
         <div class="formElement">
             <label for="name">Name</label>
             <input type="text" name="name" id="name" ng-model="event.name" required>
-            <span ng-show="guestForm.inputName.$error.required">Name is required.</span>
         </div>
 
         <div class="formElement">
@@ -18,43 +17,48 @@
 
         <div class="formElement">
             <label for="maximalAmountOfGuests">Maximal amount of guests</label>
-            <input type="number" name="maximalAmountOfGuests" id="maximalAmountOfGuests" ng-model="event.maximalAmoutOfGuests" >
+            <input type="number" name="maximalAmountOfGuests" id="maximalAmountOfGuests" ng-model="event.maximalAmountOfGuests" >
+        </div>
+
+
+        <div class="formElement">
+            <label for="targetGroup">Target Group</label>
+            <input type="text" name="targetGroup" id="targetGroup" ng-model="event.targetGroup" >
+        </div>
+
+        <div class="formElement">
+            <label for="contribution">Contribution</label>
+            <input type="text" name="contribution" id="contribution" ng-model="event.contributions" >
         </div>
 
         <div class="formElement">
             <label for="timesBegin">Start Time</label>
-            <input type="datetime" name="timesBegin" id="timesBegin" placeholder="yyyy-MM-ddTHH:mm:ss" ng-model="event.times.begin" required>
-            <span ng-show="guestForm.inputName.$error.required">Start Time is required.</span>
+            <input type="datetime" name="timesBegin" id="timesBegin" placeholder="yyyy-MM-ddTHH:mm:ss" ng-model="event.times.begin" >
         </div>
 
         <div class="formElement">
             <label for="timesEnd">End Time</label>
-            <input type="datetime-local" name="timesEnd" id="timesEnd" placeholder="yyyy-MM-ddTHH:mm:ss" ng-model="event.times.end" required>
-            <span ng-show="guestForm.inputName.$error.required">End Time is required.</span>
+            <input type="datetime-local" name="timesEnd" id="timesEnd" placeholder="yyyy-MM-ddTHH:mm:ss" ng-model="event.times.end" >
         </div>
 
         <div class="formElement">
             <label for="locationName">Location Name</label>
-            <input type="text" name="locationName" id="locationName" ng-model="event.location.name" required>
-            <span ng-show="guestForm.inputName.$error.required">Location Name is required.</span>
+            <input type="text" name="locationName" id="locationName" ng-model="event.location.name" >
         </div>
 
         <div class="formElement">
             <label for="locationStreet">Location Street</label>
-            <input type="text" name="locationStreet" id="locationStreet" ng-model="event.location.street" required>
-            <span ng-show="guestForm.inputName.$error.required">Location Street is required.</span>
+            <input type="text" name="locationStreet" id="locationStreet" ng-model="event.location.street" >
         </div>
 
         <div class="formElement">
             <label for="locationZip">Location Zip</label>
-            <input type="text" name="locationZip" id="locationZip" ng-model="event.location.plz" required>
-            <span ng-show="guestForm.inputName.$error.required">Location PLZ is required.</span>
+            <input type="text" name="locationZip" id="locationZip" ng-model="event.location.plz" >
         </div>
 
         <div class="formElement">
             <label for="locationCity">Location City</label>
-            <input type="text" name="locationCity" id="locationCity" ng-model="event.location.city" required>
-            <span ng-show="guestForm.inputName.$error.required">Location City is required.</span>
+            <input type="text" name="locationCity" id="locationCity" ng-model="event.location.city" >
         </div>
 
         <div class="formElement">
