@@ -1,7 +1,7 @@
 <div class="title">
     <h2>Guests</h2>
 </div>
-<div class="card" ng-repeat="guest in guests | filter:{canceled:false}">
+<div class="card" ng-repeat="guest in activeGuests= (guests | filter:{canceled:false})">
     <div>{{guest.name}}</div>
 
     <div ng-hide="!guest.contribution">Gifts: {{guest.contribution}}</div>
@@ -13,6 +13,9 @@
         <a href="#/events/{{eventId}}/guests" ng-click="signOut(guest.id)">Abmelden <i class="fa fa-sign-out" right></i></a>
         <a href="#/events/{{eventId}}/guest/{{guest.id}}/edit">Editieren <i class="fa fa-pencil" right></i></a>
     </div>
+</div>
+<div class="card" ng-show="!activeGuests.length">
+    <div>No Guests yet :(</div>
 </div>
 
 <div class="card" ng-show="signupOpen"><a href="#/events/{{eventId}}/addGuest"><i class="fa fa-plus" left></i> Anmelden</a></div>
