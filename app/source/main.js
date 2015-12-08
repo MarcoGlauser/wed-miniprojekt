@@ -28,17 +28,18 @@ require(['angular', 'app'], function (angular, EventManager) {
 
 
 /**
- * I really hate require.js - common log something, just something, even for that you need to write
+ * I really hate require.js - it can not log something by default, just something, even for that you need to write
  * javascript.
  */
-
 start = +new Date();
 requirejs.onResourceLoad = function(context, map, depArray) {
+    // log each loading + how log it takes
     var duration = new Date() - start;
     console.log("onResourceLoad", duration + "ms", map.id);
 };
 
 requirejs.onError = function (err) {
+    // log on error the file + exception
     console.log(err.requireType);
     console.log('modules: ' + err.requireModules);
     throw err;
