@@ -86,6 +86,10 @@ i{
     border: none;
     background: none;
 }
+
+.formElement input[type='text'].ng-invalid,.formElement input[type='number'].ng-invalid,.formElement input[type='datetime'].ng-invalid, .formElement textarea.ng-invalid.ng-invalid{
+    border-bottom: solid #ff0a07 1px;
+}
 .formElement input[type='text'],.formElement input[type='number'],.formElement input[type='datetime'] , .formElement textarea{
     border-bottom: solid #b3d4fc 1px;
 }
