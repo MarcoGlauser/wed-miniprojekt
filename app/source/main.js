@@ -11,10 +11,10 @@ require.config({
         'angular': {
             exports: 'angular'
         },
-        'angular-resource':{
+        'angular-resource': {
             deps: ['angular']
         },
-        'angular-route':{
+        'angular-route': {
             deps: ['angular']
         }
     }
@@ -26,21 +26,24 @@ require(['angular', 'app'], function (angular, EventManager) {
     });
 });
 
+new function () {
 
-/**
- * I really hate require.js - it can not log something by default, just something, even for that you need to write
- * javascript.
- */
-start = +new Date();
-requirejs.onResourceLoad = function(context, map, depArray) {
-    // log each loading + how log it takes
-    var duration = new Date() - start;
-    console.log("onResourceLoad", duration + "ms", map.id);
-};
 
-requirejs.onError = function (err) {
-    // log on error the file + exception
-    console.log(err.requireType);
-    console.log('modules: ' + err.requireModules);
-    throw err;
-};
+    /**
+     * I really hate require.js - it can not log something by default, just something, even for that you need to write
+     * javascript.
+     */
+    var start = +new Date();
+    requirejs.onResourceLoad = function (context, map, depArray) {
+        // log each loading + how log it takes
+        var duration = new Date() - start;
+        console.log("onResourceLoad", duration + "ms", map.id);
+    };
+
+    requirejs.onError = function (err) {
+        // log on error the file + exception
+        console.log(err.requireType);
+        console.log('modules: ' + err.requireModules);
+        throw err;
+    };
+}();
