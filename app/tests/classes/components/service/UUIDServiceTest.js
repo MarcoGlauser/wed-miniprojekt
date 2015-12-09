@@ -1,4 +1,4 @@
-define(['app/components/services/UUIDService'], function (uuidService) {
+define(['classes/components/services/UUIDService'], function (uuidService) {
     'use strict';
 
     describe('UUIDServceTest', function () {

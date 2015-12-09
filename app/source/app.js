@@ -9,7 +9,8 @@ define(
         'classes/events/createEvent',
         'classes/events/eventDetail',
         'classes/components/services/UUIDService',
-        'angular-resource','angular-route'
+        'angular-resource',
+        'angular-route'
     ],
     function (
         angular,
@@ -23,8 +24,10 @@ define(
         uuidService
     ) {
 
+        console.log("create module");
         var eventManager = angular.module('eventManager', ['ngRoute','ngResource']);
 
+        console.log("inject events related classes");
         eventsService.$inject = ['$resource'];
         eventManager.factory('eventsService',eventsService);
 
@@ -39,8 +42,8 @@ define(
         eventDetailController.$inject=['$scope','eventsService','$routeParams'];
         eventManager.controller('eventDetailController',eventDetailController);
 
-
         // guests related stuff
+        console.log("inject guests related classes");
         guestService.$inject = ['$resource'];
         eventManager.factory('guestService', guestService);
 
@@ -50,6 +53,7 @@ define(
         addGuestController.$inject=['$scope','guestService', '$routeParams', '$location'];
         eventManager.controller('addGuestController',addGuestController);
 
+        console.log("configure route provider");
         eventManager.config(['$routeProvider', function($routeProvider) {
             $routeProvider
                 .when('/', {
