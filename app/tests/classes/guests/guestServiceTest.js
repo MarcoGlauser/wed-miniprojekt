@@ -30,7 +30,6 @@ define(
             });
 
 
-
             it('should find guests for event', function () {
                 var eventId = 1;
 
@@ -59,6 +58,24 @@ define(
                 httpBackend.flush();
             });
 
+            it('should add new guest to event', function () {
+                var eventId = 1;
+
+                var guestToAd = {
+                    name: 'James Bond',
+                    contribution: 'Entertainment',
+                    comment: 'Bond, James Bond'
+                };
+
+                console.log("mock REST server");
+                httpBackend.expectPOST('http://127.0.0.1:8080/api/events/1/guests').respond(200, JSON.stringify(
+                    guestToAd
+                ));
+
+                guestService.addGuestToEvent(eventId, guestToAd);
+                httpBackend.flush();
+            });
+
             it('should find guest by id', function () {
                 var eventId = 1;
                 var guestId = 2;
@@ -75,6 +92,31 @@ define(
                 });
 
                 // Because we're mocking an async action, ngMock provides a method for us to explicitly flush the request
+                httpBackend.flush();
+            });
+
+            it('should sign out guest', function () {
+                var guestId = 2;
+
+                console.log("mock REST server");
+                httpBackend.expectPOST('http://127.0.0.1:8080/api/events/2/guests').respond(200);
+
+                console.log("do actual request");
+                guestService.signOutGuest(guestId);
+
+                httpBackend.flush();
+            });
+
+            it('should save updated guest', function () {
+                var eventId = 1;
+                var guestId = 2;
+
+                console.log("mock REST server");
+                httpBackend.expectPOST('http://127.0.0.1:8080/api/events/1/guests').respond(200);
+
+                console.log("do actual request");
+                guestService.saveUpdatedGuest(eventId, guestId);
+
                 httpBackend.flush();
             });
 
