@@ -1,7 +1,7 @@
 define(
     [
         'angular',
-        'classes/events/events',
+        'classes/events/eventsController',
         'classes/events/eventsService',
         'classes/guests/showGuests',
         'classes/guests/guestsService',
