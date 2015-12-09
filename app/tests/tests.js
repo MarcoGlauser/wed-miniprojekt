@@ -40,6 +40,7 @@ require(['libraries/jasmine-boot'], function () {
     require([
         'testFolder/classes/components/service/UUIDServiceTest',
         'testFolder/classes/guests/guestServiceTest',
+        'testFolder/classes/events/eventsServiceTest',
     ],function(){
         //trigger Jasmine
         window.onload();

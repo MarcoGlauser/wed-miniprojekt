@@ -22,8 +22,8 @@ define([], function () {
             },
             get:{
                 transformResponse : function (event) {
-                    var event = angular.fromJson(event)
-                    annotateNotCancelledGuests(event)
+                    var event = angular.fromJson(event);
+                    annotateNotCancelledGuests(event);
                     return event
                 }
             }
