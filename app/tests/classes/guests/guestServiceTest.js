@@ -1,12 +1,9 @@
 define(
     [
         'libraries/angularMocks',
-        'classes/guests/guestsService',
         'app'
     ],
-    function (angularMocks,
-              GuestsService,
-              app) {
+    function (angularMocks, app) {
 
         'use strict';
         describe('GuestServiceTest', function () {
@@ -20,22 +17,10 @@ define(
                     httpBackend = $httpBackend;
                     guestService = _guestService_;
                 });
+
+                expect(guestService).toBeDefined();
             });
-            /*
-             beforeEach(angularMocks.inject(function ($injector, $guestService) {
-             console.log("Mock backend");
 
-             $httpBackend = $injector.get('$httpBackend');
-
-             // var $resource = $injector.get('$resource');
-             // guestsService = new GuestsService($injector.get('$resource'));
-
-             // console.log("Print guestService: ");
-             // console.log(guestsService);
-             // expect(guestsService).toBeDefined();
-             }));
-             /*
-             */
             afterEach(function () {
                 console.log("Check if any pending requests");
 
@@ -44,18 +29,41 @@ define(
                 httpBackend.verifyNoOutstandingRequest();
             });
 
-            it('should find guest by id', function () {
-                expect(guestService).toBeDefined();
 
+
+            it('should find guests for event', function () {
+                var eventId = 1;
+
+                console.log("mock REST server");
+                httpBackend.expectGET('http://127.0.0.1:8080/api/events/1/guests').respond(200, JSON.stringify(
+                    {
+                        guests: [
+                            createNewBondAsGuest(1),
+                            createEinsteinAsGuest(2),
+                            createSupermanAsGuest(3)
+                        ]
+                    }
+                ));
+
+                console.log("do actual request");
+                guestService.findGuestsForEvent(eventId).then(function (foundGuests) {
+                    expect(foundGuests.length).toBe(3);
+                    var onlyNames = extractsNamesOnly(foundGuests);
+
+                    expect(onlyNames).toContain('James Bond');
+                    expect(onlyNames).toContain('Albert Einstein');
+                    expect(onlyNames).toContain('Superman');
+                });
+
+                // Because we're mocking an async action, ngMock provides a method for us to explicitly flush the request
+                httpBackend.flush();
+            });
+
+            it('should find guest by id', function () {
                 var eventId = 1;
                 var guestId = 2;
 
-                var returnedGuest = {
-                    id: guestId,
-                    name: 'James Bond',
-                    contribution: 'Entertainment',
-                    comment: 'Bond, James Bond'
-                };
+                var returnedGuest = createNewBondAsGuest(guestId);
 
                 console.log("mock REST server");
                 httpBackend.expectGET('http://127.0.0.1:8080/api/events/1/guests/2').respond(200, JSON.stringify(returnedGuest));
@@ -70,5 +78,37 @@ define(
                 httpBackend.flush();
             });
 
+            function createNewBondAsGuest(guestId) {
+                return {
+                    id: guestId,
+                    name: 'James Bond',
+                    contribution: 'Entertainment',
+                    comment: 'Bond, James Bond'
+                };
+            }
+
+            function createEinsteinAsGuest(guestId) {
+                return {
+                    id: guestId,
+                    name: 'Albert Einstein',
+                    contribution: 'Theory of relativity',
+                    comment: 'Only two things are infinite, the universe and human stupidity, and I am not sure about the former.'
+                };
+            }
+
+            function createSupermanAsGuest(guestId) {
+                return {
+                    id: guestId,
+                    name: 'Superman',
+                    contribution: 'Strength',
+                    comment: 'Yeah!'
+                };
+            }
+
+            function extractsNamesOnly(foundGuests) {
+                return foundGuests.map(function (a) {
+                    return a.name
+                });
+            }
         });
     });
