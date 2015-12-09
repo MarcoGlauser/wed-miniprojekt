@@ -98,6 +98,18 @@ define(
                 httpBackend.flush();
             });
 
+            it('test event.notCancelledGuests()', function () {
+                console.log("mock REST server");
+                httpBackend.expectGET('http://127.0.0.1:8080/api/events/3').respond(200, JSON.stringify(
+                    createHsrPartyAsEvent(3)
+                ));
+
+                eventsService.detail(3).then(function(event){
+                    expect(event.notCancelledGuests().length).toBe(1)
+                });
+                httpBackend.flush();
+            });
+
             function createHsrPartyAsEvent(id) {
                 return {
                     id: id,
@@ -118,7 +130,21 @@ define(
                         end: "2011-11-16T03:00:00.000Z"
                     }
                     ,
-                    guests: []
+                    guests: [
+                        {
+                            id: 1,
+                            name: 'Superman',
+                            contribution: 'Strength',
+                            comment: 'Yeah!'
+                        },
+                        {
+                            id: 2,
+                            name: 'Batman',
+                            contribution: 'Batman',
+                            comment: Array(16).join('wat'-1),  //https://www.youtube.com/watch?v=FqhZZNUyVFM
+                            canceled: true
+                        }
+                    ]
                 };
             }
         });
