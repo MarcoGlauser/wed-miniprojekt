@@ -98,7 +98,7 @@ define(
                 httpBackend.flush();
             });
 
-            it('test event.notCancelledGuests()', function () {
+            it('should find out the number of not cancelled guests', function () {
                 console.log("mock REST server");
                 httpBackend.expectGET('http://127.0.0.1:8080/api/events/3').respond(200, JSON.stringify(
                     createHsrPartyAsEvent(3)
@@ -110,6 +110,23 @@ define(
                 httpBackend.flush();
             });
 
+            it('shoudld find out if guests can signup', function () {
+                console.log("mock REST server");
+                httpBackend.expectGET('http://127.0.0.1:8080/api/events/3').respond(200, JSON.stringify(
+                    createHsrPartyAsEvent(3)
+                ));
+                eventsService.detail(3).then(function(event){
+
+                    expect(event.signupOpen()).toBe(true);
+                    event.guests.push(createAsdfman());
+                    console.log(event.guests)
+                    expect(event.signupOpen()).toBe(false)
+
+                });
+                httpBackend.flush();
+
+            })
+
             function createHsrPartyAsEvent(id) {
                 return {
                     id: id,
@@ -117,7 +134,7 @@ define(
                     description: "Party an der HSR",
                     targetGroup: "Studenten",
                     contributionsDescription: "Kuchen",
-                    maxAmountOfGuests: null,
+                    maxAmountOfGuests: 2,
                     location: {
                         name: "HSR",
                         street: "Oberseestrasse",
@@ -146,6 +163,13 @@ define(
                         }
                     ]
                 };
+            }
+            function createAsdfman(){
+                return {
+                    id: 3,
+                    name : 'Asdfman',
+                    canceled : false
+                }
             }
         });
     });
